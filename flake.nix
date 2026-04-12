@@ -44,6 +44,25 @@
             }
 	   ];
 	 };
-	};
+        laptop = nixpkgs.lib.nixosSystem {
+           system = "x86_64-linux";
+           specialArgs = { inherit inputs; };
+           modules = [
+            ./hosts/laptop
+            niri.nixosModules.niri
+            home-manager.nixosModules.home-manager
+           {
+             home-manager.useGlobalPkgs = true;
+             home-manager.useUserPackages = true;
+             home-manager.users.laylisp = import ./home/common.nix;
+             home-manager.extraSpecialArgs = {
+               inherit inputs;
+               isLaptop = true;
+ 	     };
+            }
+         ];
        };
- }
+
+    };
+   };
+}

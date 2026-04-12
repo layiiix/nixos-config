@@ -4,7 +4,7 @@
   imports = [
    # inputs.niri.homeModules.config
     inputs.noctalia.homeModules.default
-    ./programs
+    ./programs/default.nix
   ];
 # programs.niri = {
  #    settings = {
