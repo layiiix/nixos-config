@@ -1,9 +1,10 @@
 { ... }:
 {
   imports = [
-    ./nvim.nix
-    ./fuzzel.nix
-    ./wezterm.nix
+    ./nvim
+    ./fuzzel
+    ./wezterm
+    ./niri
    ];
 }
 
