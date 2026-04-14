@@ -15,9 +15,9 @@ in
 
   programs.niri = {
     # Puedes quitar esto si ya lo tienes en otro sitio
-    enable = true;
 
-    package = pkgs.niri;
+
+
 
     settings.includes = [
       configPath
