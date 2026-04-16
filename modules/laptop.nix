@@ -15,7 +15,7 @@
 
   # ===== DESACTIVAR POWER-PROFILES-DAEMON =====
   services.power-profiles-daemon.enable = false;
-
+  services.upower.enable = true;
   # ===== TOUCHPAD =====
   services.libinput = {
     enable = true;
@@ -28,7 +28,7 @@
   };
 
   # ===== BRILLO DE PANTALLA =====
-  programs.light.enable = true;
+ # programs.light.enable = true;
 
   # ===== WIFI (ahorro de energía) =====
   networking.networkmanager.wifi.powersave = true;
@@ -40,14 +40,15 @@
   };
 
   # ===== SUSPENSIÓN AL CERRAR TAPA =====
-  services.logind = {
-    lidSwitch = "suspend";
-    lidSwitchExternalPower = "lock";
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend";
+    HandleLidSwitchExternalPower = "lock";
   };
 
   # ===== PAQUETES ESPECÍFICOS DE PORTÁTIL =====
   environment.systemPackages = with pkgs; [
     brightnessctl
     powertop
+    pkgs.fprintd
   ];
 }

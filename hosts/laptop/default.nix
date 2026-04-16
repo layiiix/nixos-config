@@ -11,9 +11,10 @@
 
   networking.hostName = "laptop";
 
-  users.users.laylisp = {
+  users.users.layiiesp = {
     isNormalUser = true;
     description = "layiiesp";
+    initialPassword = "1234";
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" "storage" ];
   };
 

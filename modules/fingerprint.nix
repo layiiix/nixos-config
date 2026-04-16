@@ -4,9 +4,10 @@
 {
   # ===== HABILITAR SERVICIO DE HUELLA =====
   services.fprintd.enable = true;
-
+  services.fprintd.tod.enable = false;
   # ===== AUTENTICACIÓN POR HUELLA =====
   security.pam.services = {
-    login.fprintAuth = true;    # Huella para login
+    login.fprintAuth = true;
+    sudo.fprintAuth = false; 
   };
 }
