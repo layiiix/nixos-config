@@ -5,5 +5,6 @@
     discord
     kdePackages.kdenlive
     virtualbox
+    antigravity-fhs
   ];
 }

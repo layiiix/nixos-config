@@ -5,6 +5,7 @@
     ./fuzzel
     ./wezterm
     ./niri
+    ./zsh
    ];
 }
 

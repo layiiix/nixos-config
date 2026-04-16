@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports =   [ ./cachix.nix ];
@@ -35,7 +35,12 @@
 
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
-  #programs.niri.enable = true;
+   
+ # programs.niri = {
+#  enable = true;
+  #package = inputs.niri.packages.${pkgs.system}.niri-stable;
+#};
+ programs.niri.enable = true;
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -140,7 +145,10 @@
      p7zip
      unrar
      python3
+     grim
+     slurp
      catppuccin-sddm
+     localsend
    ];
   #Fonts
    fonts.packages = with pkgs; [
@@ -176,11 +184,12 @@
   #XDG_CURRENT_DESKTOP = "sway"; # o "niri" (pero sway es más compatible)
   #};
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  #Puertos : localsend
+  networking.firewall.allowedTCPPorts = [53317 22 ];
+  networking.firewall.allowedUDPPorts = [ 53317 22 ];
   # Or disable the firewall altogether.
    networking.firewall.enable = false;
 

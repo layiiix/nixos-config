@@ -4,7 +4,6 @@
   # Activar LSD: Reemplazo para 'ls' escrito en Rust con iconos
   programs.lsd = {
     enable = true;
-    enableAliases = true;
   };
 
   # Activar Zoxide: Un comando 'cd' ultrasmart ("z" command)
@@ -51,7 +50,7 @@
     };
 
     # Atajos de terminal adicionales o ligeras mejoras visuales
-    initExtra = ''
+    initContent = ''
       # Búsqueda en el historial escribiendo y luego usando flechas arriba/abajo
       bindkey '^[[A' history-search-backward
       bindkey '^[[B' history-search-forward

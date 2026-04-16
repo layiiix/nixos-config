@@ -1,11 +1,15 @@
-{ ... }:
+{ isLaptop, ... }:
+let
+  fontSize = if isLaptop then "16" else "26";
+  fuzzelWidth = if isLaptop then 30 else 40;
+in
 {
   programs.fuzzel = {
    enable = true;
    settings = {
      main = {
-       font = "JEtBrainsMono Nerd Font:size=26";
-       width = 40;
+       font = "JetBrainsMono Nerd Font:size=${fontSize}";
+       width = fuzzelWidth;
        lines = 10;
      };   
     };

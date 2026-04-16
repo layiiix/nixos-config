@@ -22,15 +22,21 @@
           url = "github:sodiboo/niri-flake";
 	  inputs.nixpkgs.follows = "nixpkgs";
       };
+
+      nixvim = {
+          url = "github:nix-community/nixvim";
+          inputs.nixpkgs.follows = "nixpkgs";
+      };
    };
 	
-    outputs = { self, nixpkgs, home-manager, noctalia, niri, ... }@inputs: {
+    outputs = { self, nixpkgs, home-manager, noctalia, niri, nixvim, ... }@inputs: {
       nixosConfigurations = {
          desktop = nixpkgs.lib.nixosSystem {
            system = "x86_64-linux";
 	   specialArgs = { inherit inputs; };
 	   modules = [
 	    ./hosts/desktop
+	    niri.nixosModules.niri
 	    home-manager.nixosModules.home-manager
 	    {
 	      home-manager.useGlobalPkgs = true;
