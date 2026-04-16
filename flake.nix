@@ -59,7 +59,7 @@
            {
              home-manager.useGlobalPkgs = true;
              home-manager.useUserPackages = true;
-             home-manager.users.laylisp = import ./home/common.nix;
+             home-manager.users.layiiesp = import ./home/common.nix;
              home-manager.extraSpecialArgs = {
                inherit inputs;
                isLaptop = true;

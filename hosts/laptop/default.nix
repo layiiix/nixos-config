@@ -14,7 +14,7 @@
   users.users.layiiesp = {
     isNormalUser = true;
     description = "layiiesp";
-    initialPassword = "1234";
+    initialPassword = "cambiaesto";
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" "storage" ];
   };
 

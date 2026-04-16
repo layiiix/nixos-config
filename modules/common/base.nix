@@ -28,10 +28,10 @@
   };
 
 
-  networking.hostName = "desktop"; # Define your hostname.
+ # networking.hostName = "desktop"; # Define your hostname.
 
   # Configure network connections interactively with nmcli or nmtui.
-#  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
@@ -158,6 +158,7 @@
      liberation_ttf
      freefont_ttf
    ];
+  nixpkgs.config.allowUnfree = true; 
 # programs.xwayland-satellite.enable = true;
  #programs.niri.enable = true;
  programs.xwayland.enable = true;
@@ -191,7 +192,7 @@
   networking.firewall.allowedTCPPorts = [53317 22 ];
   networking.firewall.allowedUDPPorts = [ 53317 22 ];
   # Or disable the firewall altogether.
-   networking.firewall.enable = false;
+   networking.firewall.enable = true;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
