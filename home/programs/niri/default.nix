@@ -108,7 +108,10 @@ in
       # AUTOSTART & SYSTEM
       ################################
       spawn-at-startup = [
+        # Interfaz de usuario superior
         { command = [ "noctalia-shell" ]; }
+        # Agente de seguridad para pedir contraseñas gráficas
+        { command = [ "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1" ]; }
       ];
 
       hotkey-overlay = {

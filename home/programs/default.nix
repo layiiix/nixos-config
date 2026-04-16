@@ -6,6 +6,8 @@
     ./wezterm
     ./niri
     ./zsh
+    ./noctalia
+    ./librewolf
    ];
 }
 

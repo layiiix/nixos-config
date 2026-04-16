@@ -48,7 +48,6 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "es_ES.UTF-8";
    console = {
-     font = "Lat2-Terminus16";
      keyMap = "es";
      useXkbConfig = false; # use xkb.options in tty.
    };
@@ -137,7 +136,6 @@
      vlc
      yazi
      kdePackages.dolphin
-     librewolf 
      wl-clipboard
      xwayland-satellite
      unzip
@@ -163,6 +161,8 @@
 # programs.xwayland-satellite.enable = true;
  #programs.niri.enable = true;
  programs.xwayland.enable = true;
+ programs.zsh.enable = true;
+ users.defaultUserShell = pkgs.zsh;
  # variables entorno
   environment.variables = {
    EDITOR = "nvim";

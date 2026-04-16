@@ -21,7 +21,7 @@
 	  wine
 	  wine64
 	  vulkan-tools
-	
+	  cabextract # Indispensable para que winetricks pueda extraer e instalar fuentes de Windows
 	];
 	nixpkgs.config.allowUnfree = true;
 }

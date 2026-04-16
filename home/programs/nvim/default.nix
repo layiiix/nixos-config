@@ -3,7 +3,7 @@
 {
   # Cargamos la magia de Nixvim directamente desde tu Flake
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
   ];
 
   # Reemplazamos programs.neovim nativo por programs.nixvim
@@ -57,7 +57,7 @@
       # Neo-tree: Árbol lateral de archivos
       neo-tree = {
         enable = true;
-        closeIfLastWindow = true;
+        settings.close_if_last_window = true;
       };
 
       # Telescope: Buscador omnipresente con Ctrl+P / find files
@@ -105,6 +105,12 @@
           pyright.enable = true;
           # Inteligencia pura de Nix (para que tu editor sepa Nix)
           nixd.enable = true;
+          # Inteligencia máxima para Rust
+          rust_analyzer = {
+            enable = true;
+            installCargo = true;
+            installRustc = true;
+          };
         };
         keymaps = {
           lspBuf = {

@@ -27,21 +27,15 @@
     tray = "never"; # IMPORTANTE en Niri (no hay system tray)
   };
 
- programs.noctalia-shell = {
-   enable = true;
-   settings = {
-    bar.position = "top";
-    colorSchemes = {
-      darkMode = true;
-      prredefinedScheme = "Tokyo Night";
-    };
-   };
- }; 
+
   home.packages = with pkgs; [
     wezterm
     fuzzel
     waybar
     git
+    # Wayland Utils
+    polkit_gnome
+    pavucontrol
   ];
   home.stateVersion = "25.11";
 }
