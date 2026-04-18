@@ -74,8 +74,8 @@
   boot.supportedFilesystems = [ "btrfs" ];
   nix.gc = {
    automatic = true;
-   dates = "weekly";
-   options = "--delete-older-than 3generations";
+   dates = "daily";
+   options = "--delete-older-than-3d";
   };
   programs.nix-ld.enable = true;
   # Configure keymap in X11
@@ -95,7 +95,12 @@
      alsa.support32Bit = true;
      pulse.enable = true;
    };
-
+   services.fwupd = {
+     enable = true;
+   };
+   services.upower = {
+       enable = true;
+    };
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
@@ -147,7 +152,8 @@
      slurp
      catppuccin-sddm
      localsend
-     fwupd
+     
+     
    ];
   #Fonts
    fonts.packages = with pkgs; [
