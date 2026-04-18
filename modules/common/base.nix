@@ -147,6 +147,7 @@
      slurp
      catppuccin-sddm
      localsend
+     fwupd
    ];
   #Fonts
    fonts.packages = with pkgs; [
