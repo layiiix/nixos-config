@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
 	programs.steam = {
 	  enable = true;
@@ -19,9 +19,21 @@
 	  freetype
 	  fontconfig
 	  wine
+      ffmpeg
 	  wine64
 	  vulkan-tools
 	  cabextract # Indispensable para que winetricks pueda extraer e instalar fuentes de Windows
 	];
 	nixpkgs.config.allowUnfree = true;
+  programs.obs-studio = {
+    enable = true;
+    # Forzar CUDA support para que obs_nvenc_h264_tex esté disponible
+    package = pkgs.obs-studio.override {
+      cudaSupport = true;
+    };
+    plugins = with pkgs.obs-studio-plugins; [
+      # Captura de pantalla en Wayland via PipeWire (nativo en OBS)
+    ];
+  };
+
 }

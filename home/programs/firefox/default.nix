@@ -5,8 +5,10 @@
         languagePacks = [ "es_ES" ];
         
         #Extensiones xd
-        ExtensionSettings = {
-            "*".installation_mode = "allowed";
+        policies = {
+            ExtensionSettings = {
+                "*".installation_mode = "allowed";
         };
+       };
     };
 }

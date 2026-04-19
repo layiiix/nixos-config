@@ -8,7 +8,7 @@
     ./zsh
     ./noctalia
     ./librewolf
-    ./firefox/
+    ./firefox
    ];
 }
 

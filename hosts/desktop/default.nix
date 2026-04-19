@@ -61,7 +61,6 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
    environment.systemPackages = with pkgs; [
   #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     obs-studio
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -90,7 +89,8 @@
   environment.variables = {
    WLR_NO_HARDWARE_CURSORS = "1";
    LIBVA_DRIVER_NAME = "nvidia";
-   GBM_BACKEMD = "nvidia-drm";
+   NVD_BACKEND = "direct";
+   GBM_BACKEND = "nvidia-drm";
    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
    };
   # This option defines the first version of NixOS you have installed on this particular machine,
