@@ -5,8 +5,14 @@
 	  remotePlay.openFirewall = true;
 	  dedicatedServer.openFirewall = true;
 	  localNetworkGameTransfers.openFirewall = true;
+      package = pkgs.steam.override {
+          extraPkgs = pkgs: with pkgs; [
+          libkrb5
+          keyutils
+        ];
+     };
 	};
-	programs.gamemode.enable = true;
+   	programs.gamemode.enable = true;
 	hardware.graphics = {
 	  enable32Bit = true;
 	};
@@ -22,6 +28,7 @@
       ffmpeg
 	  wine64
 	  vulkan-tools
+      gamescope
 	  cabextract # Indispensable para que winetricks pueda extraer e instalar fuentes de Windows
 	];
 	nixpkgs.config.allowUnfree = true;
