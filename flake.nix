@@ -68,6 +68,24 @@
          ];
        };
 
+        server = nixpkgs.lib.nixosSystem {
+           system = "x86_64-linux";
+           specialArgs = { inherit inputs; };
+           modules = [
+            ./hosts/server
+            home-manager.nixosModules.home-manager
+           {
+             home-manager.useGlobalPkgs = true;
+             home-manager.useUserPackages = true;
+             home-manager.users.layiiesp = import ./home/common.nix;
+             home-manager.extraSpecialArgs = {
+               inherit inputs;
+               isLaptop = false;
+             };
+            }
+         ];
+       };
+
     };
    };
 }

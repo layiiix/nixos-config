@@ -154,7 +154,7 @@
      slurp
      catppuccin-sddm
      localsend
-     
+     fastfetch
      
    ];
   #Fonts

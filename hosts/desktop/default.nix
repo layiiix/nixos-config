@@ -12,6 +12,7 @@
       ../../modules/desktop.nix
       ../../modules/hardware/nvidia.nix
       ../../modules/gaming.nix
+      ../../modules/docker-media.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
