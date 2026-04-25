@@ -17,7 +17,7 @@
     before = [
       "docker-traefik.service"
       "docker-jellyfin.service"
-      "docker-jellyseerr.service"
+      "docker-seerr.service"
       "docker-prowlarr.service"
       "docker-radarr.service"
       "docker-sonarr.service"
@@ -27,7 +27,7 @@
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
-      ExecStart = "${pkgs.docker}/bin/docker network create media || true";
+      ExecStart = "-${pkgs.docker}/bin/docker network create media";
     };
   };
 
@@ -60,16 +60,16 @@
       };
     };
 
-    jellyseerr = {
-      image = "fallenbagel/jellyseerr:latest";
+    seerr = {
+      image = "seerr/seerr:latest";
       environment = { PUID = "1000"; PGID = "1000"; TZ = "Europe/Madrid"; };
-      volumes = [ "/media/jellyseerr/config:/app/config" ];
+      volumes = [ "/media/seerr/config:/app/config" ];
       ports = [ "5055:5055" ];
       extraOptions = [ "--network=media" ];
       labels = {
         "traefik.enable" = "true";
-        "traefik.http.routers.jellyseerr.rule" = "Host(`jellyseerr.local`)";
-        "traefik.http.services.jellyseerr.loadbalancer.server.port" = "5055";
+        "traefik.http.routers.seerr.rule" = "Host(`seerr.local`)";
+        "traefik.http.services.seerr.loadbalancer.server.port" = "5055";
       };
     };
 
@@ -168,22 +168,22 @@
           - "traefik.http.routers.jellyfin.rule=Host(`jellyfin.local`)"
           - "traefik.http.services.jellyfin.loadbalancer.server.port=8096"
 
-      jellyseerr:
-        image: fallenbagel/jellyseerr:latest
+      seerr:
+        image: seerr/seerr:latest
         environment:
           - PUID=1000
           - PGID=1000
           - TZ=Europe/Madrid
         volumes:
-          - /media/jellyseerr/config:/app/config
+          - /media/seerr/config:/app/config
         ports:
           - "5055:5055"
         networks:
           - media
         labels:
           - "traefik.enable=true"
-          - "traefik.http.routers.jellyseerr.rule=Host(`jellyseerr.local`)"
-          - "traefik.http.services.jellyseerr.loadbalancer.server.port=5055"
+          - "traefik.http.routers.seerr.rule=Host(`seerr.local`)"
+          - "traefik.http.services.seerr.loadbalancer.server.port=5055"
 
       prowlarr:
         image: lscr.io/linuxserver/prowlarr:latest

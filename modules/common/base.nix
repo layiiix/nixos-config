@@ -19,7 +19,7 @@
   #services.displayManager.sddm.enable = true;
   #services.displayManager.sddm.wayland.enable =true;
   services.xserver.enable = true;
-
+  
   services.displayManager.sddm = {
    enable = true;
    wayland.enable = false;
@@ -70,7 +70,7 @@
     max-jobs = 4;
     cores = 3; 
   };
-
+  nix.settings.trusted-users = [ "root" "layiiesp" ];
   nix.settings.auto-optimise-store = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   boot.supportedFilesystems = [ "btrfs" ];

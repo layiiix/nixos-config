@@ -31,6 +31,9 @@
       gamescope
 	  cabextract # Indispensable para que winetricks pueda extraer e instalar fuentes de Windows
 	];
+    networking.firewall = {
+        allowedUDPPorts = [ 4960 4965 ]; #warframe
+    };
 	nixpkgs.config.allowUnfree = true;
   programs.obs-studio = {
     enable = true;
