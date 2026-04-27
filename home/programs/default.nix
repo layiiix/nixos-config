@@ -7,7 +7,6 @@
     ./niri
     ./zsh
     ./noctalia
-    ./librewolf
     ./firefox
    ];
 }

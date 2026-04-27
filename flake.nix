@@ -27,9 +27,14 @@
           url = "github:nix-community/nixvim";
           inputs.nixpkgs.follows = "nixpkgs";
       };
+
+      helium = {
+          url = "github:schembriaiden/helium-browser-nix-flake";
+          inputs.nixpkgs.follows = "nixpkgs";
+      };
    };
 	
-    outputs = { self, nixpkgs, home-manager, noctalia, niri, nixvim, ... }@inputs: {
+    outputs = { self, nixpkgs, home-manager, noctalia, niri, nixvim, helium, ... }@inputs: {
       nixosConfigurations = {
          desktop = nixpkgs.lib.nixosSystem {
            system = "x86_64-linux";

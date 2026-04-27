@@ -36,6 +36,7 @@
     # Wayland Utils
     polkit_gnome
     pavucontrol
+    inputs.helium.packages.${pkgs.system}.default
   ];
   home.stateVersion = "25.11";
 }

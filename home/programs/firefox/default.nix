@@ -2,6 +2,7 @@
 {
     programs.firefox = {
         enable = true;
+        configPath = "${config.xdg.configHome}/mozilla/firefox";
         languagePacks = [ "es_ES" ];
         
         #Extensiones xd
