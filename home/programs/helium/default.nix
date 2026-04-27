@@ -15,10 +15,20 @@ let
     # "eimadpbcbfnmbkopoojfekhnkhdbieeh"
   ];
 
-  # Genera el JSON de políticas con las extensiones
+  # Genera el JSON de políticas con las extensiones (formato moderno ExtensionSettings)
   extensionPolicy = builtins.toJSON {
-    ExtensionInstallForcelist = map (id: "${id};https://clients2.google.com/service/update2/crx") extensions;
-    ExtensionInstallAllowlist = extensions;
+    ExtensionSettings = {
+      # uBlock Origin
+      "cjpalhdlnbpafiamejdnhcphjbkeiagm" = {
+        installation_mode = "force_installed";
+        update_url = "https://clients2.google.com/service/update2/crx";
+      };
+      # Bitwarden
+      "nngceckbapebfimnlniiiahkandclblb" = {
+        installation_mode = "force_installed";
+        update_url = "https://clients2.google.com/service/update2/crx";
+      };
+    };
   };
 in
 {
@@ -37,8 +47,7 @@ in
   ];
 
   # Políticas de Chromium para instalar extensiones automáticamente
-  # Helium usa el directorio de políticas de Chromium
-  xdg.configFile."helium/policies/managed/extensions.json".text = extensionPolicy;
+  xdg.configFile."net.imput.helium/policies/managed/policy.json".text = extensionPolicy;
 
   # Entrada de escritorio personalizada con flags de idioma
   xdg.desktopEntries.helium = {
