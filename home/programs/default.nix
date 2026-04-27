@@ -8,6 +8,7 @@
     ./zsh
     ./noctalia
     ./firefox
+    ./helium
    ];
 }
 

@@ -36,7 +36,7 @@
     # Wayland Utils
     polkit_gnome
     pavucontrol
-    inputs.helium.packages.${pkgs.system}.default
+    # helium está en home/programs/helium/default.nix (con idioma español)
   ];
   home.stateVersion = "25.11";
 }
