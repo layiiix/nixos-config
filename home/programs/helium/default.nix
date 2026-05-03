@@ -1,38 +1,9 @@
-{ pkgs, inputs, lib, ... }:
+{ pkgs, inputs, ... }:
 
 let
   helium = inputs.helium.packages.${pkgs.system}.default;
-
-  # Extensiones a instalar automáticamente.
-  # El ID se saca de la URL de la Chrome Web Store:
-  # https://chromewebstore.google.com/detail/nombre/ESTE_ES_EL_ID
-  extensions = [
-    # uBlock Origin
-    "cjpalhdlnbpafiamejdnhcphjbkeiagm"
-    # Bitwarden
-    "nngceckbapebfimnlniiiahkandclblb"
-    # Dark Reader
-    # "eimadpbcbfnmbkopoojfekhnkhdbieeh"
-  ];
-
-  # Genera el JSON de políticas con las extensiones (formato moderno ExtensionSettings)
-  extensionPolicy = builtins.toJSON {
-    ExtensionSettings = {
-      # uBlock Origin
-      "cjpalhdlnbpafiamejdnhcphjbkeiagm" = {
-        installation_mode = "force_installed";
-        update_url = "https://clients2.google.com/service/update2/crx";
-      };
-      # Bitwarden
-      "nngceckbapebfimnlniiiahkandclblb" = {
-        installation_mode = "force_installed";
-        update_url = "https://clients2.google.com/service/update2/crx";
-      };
-    };
-  };
 in
 {
-  # Wrapper de Helium con idioma español
   home.packages = [
     (pkgs.symlinkJoin {
       name = "helium";
@@ -46,10 +17,6 @@ in
     })
   ];
 
-  # Políticas de Chromium para instalar extensiones automáticamente
-  xdg.configFile."net.imput.helium/policies/managed/policy.json".text = extensionPolicy;
-
-  # Entrada de escritorio personalizada con flags de idioma
   xdg.desktopEntries.helium = {
     name = "Helium";
     genericName = "Navegador Web";

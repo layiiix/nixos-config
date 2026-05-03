@@ -24,7 +24,6 @@ in
         keyboard = {
           xkb = {
             layout = "es";
-            options = "caps:escape";
           };
           # Uncomment for numlock on startup
           # numlock = true;
