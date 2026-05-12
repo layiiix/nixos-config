@@ -16,6 +16,7 @@
     ];
 
   # Use the systemd-boot EFI boot loader.
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
    networking.hostName = "desktop"; # Define your hostname.
 

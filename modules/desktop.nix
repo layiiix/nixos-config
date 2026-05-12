@@ -1,6 +1,6 @@
 {config, pkgs, ... }:
 {
-  powerManagement.cpuFreqGovernor = "performance";
+  powerManagement.cpuFreqGovernor = "schedutil";
   environment.systemPackages = with pkgs; [
     discord
     kdePackages.kdenlive

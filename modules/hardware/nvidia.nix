@@ -20,5 +20,5 @@
    nvidiaSettings = true;
  };
   boot.kernelModules = [ "nvidia_uvm" ];
-  #boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
+  boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
 }

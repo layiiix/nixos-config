@@ -9,6 +9,8 @@
     ./noctalia
     ./firefox
     ./helium
+    ./mpd
+    ./rmpc
    ];
 }
 
