@@ -54,6 +54,8 @@
      extraGroups = [ "wheel" "video" "audio" "storage" "input"]; # Enable ‘sudo’ for the user.
      packages = with pkgs; [
        tree
+       strawberry
+       itch
      ];
    };
 
