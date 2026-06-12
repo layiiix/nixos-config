@@ -108,7 +108,7 @@ in
       ################################
       spawn-at-startup = [
         # Interfaz de usuario superior
-        { command = [ "noctalia-shell" ]; }
+        { command = [ "noctalia" ]; }
         # Agente de seguridad para pedir contraseñas gráficas
         { command = [ "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1" ]; }
       ];
