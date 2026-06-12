@@ -1,12 +1,15 @@
 { config, pkgs, ... }:
 {
-  programs.noctalia-shell = {
+  programs.noctalia = {
     enable = true;
     settings = {
-      bar.position = "top";
-      colorSchemes = {
-        darkMode = true;
-        prredefinedScheme = "Tokyo Night";
+      bar.main = {
+        position = "top";
+      };
+      theme = {
+        mode = "dark";
+        source = "builtin";
+        builtin = "Tokyo-Night";
       };
     };
   }; 

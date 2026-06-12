@@ -2,7 +2,7 @@
 {
   powerManagement.cpuFreqGovernor = "schedutil";
   environment.systemPackages = with pkgs; [
-    discord
+    vesktop
     kdePackages.kdenlive
     virtualbox
     antigravity-fhs

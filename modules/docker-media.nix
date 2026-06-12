@@ -23,7 +23,7 @@
       "docker-sonarr.service"
       "docker-qbittorrent.service"
     ];
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = if config.networking.hostName == "server" then [ "multi-user.target" ] else [];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
@@ -34,6 +34,7 @@
   virtualisation.oci-containers.containers = {
     traefik = {
       image = "traefik:v3.0";
+      autoStart = config.networking.hostName == "server";
       ports = [ "80:80" "443:443" "8080:8080" ];
       volumes = [
         "/var/run/docker.sock:/var/run/docker.sock:ro"
@@ -49,6 +50,7 @@
 
     jellyfin = {
       image = "lscr.io/linuxserver/jellyfin:latest";
+      autoStart = config.networking.hostName == "server";
       environment = { PUID = "1000"; PGID = "1000"; TZ = "Europe/Madrid"; };
       volumes = [ "/media/jellyfin/config:/config" "/media/tv:/data/tvshows" "/media/movies:/data/movies" ];
       ports = [ "8096:8096" ];
@@ -62,6 +64,7 @@
 
     seerr = {
       image = "seerr/seerr:latest";
+      autoStart = config.networking.hostName == "server";
       environment = { PUID = "1000"; PGID = "1000"; TZ = "Europe/Madrid"; };
       volumes = [ "/media/seerr/config:/app/config" ];
       ports = [ "5055:5055" ];
@@ -75,6 +78,7 @@
 
     prowlarr = {
       image = "lscr.io/linuxserver/prowlarr:latest";
+      autoStart = config.networking.hostName == "server";
       environment = { PUID = "1000"; PGID = "1000"; TZ = "Europe/Madrid"; };
       volumes = [ "/media/prowlarr/config:/config" ];
       ports = [ "9696:9696" ];
@@ -88,6 +92,7 @@
 
     radarr = {
       image = "lscr.io/linuxserver/radarr:latest";
+      autoStart = config.networking.hostName == "server";
       environment = { PUID = "1000"; PGID = "1000"; TZ = "Europe/Madrid"; };
       volumes = [ "/media/radarr/config:/config" "/media/movies:/data/movies" ];
       ports = [ "7878:7878" ];
@@ -101,6 +106,7 @@
 
     sonarr = {
       image = "lscr.io/linuxserver/sonarr:latest";
+      autoStart = config.networking.hostName == "server";
       environment = { PUID = "1000"; PGID = "1000"; TZ = "Europe/Madrid"; };
       volumes = [ "/media/sonarr/config:/config" "/media/tv:/data/tvshows" ];
       ports = [ "8989:8989" ];
@@ -114,6 +120,7 @@
 
     qbittorrent = {
       image = "lscr.io/linuxserver/qbittorrent:latest";
+      autoStart = config.networking.hostName == "server";
       environment = { PUID = "1000"; PGID = "1000"; TZ = "Europe/Madrid"; WEBUI_PORT = "8080"; };
       volumes = [ "/media/qbittorrent/config:/config" "/media/downloads:/data/downloads" ];
       ports = [ "8081:8080" "6881:6881" "6881:6881/udp" ];
