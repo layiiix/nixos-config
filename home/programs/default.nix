@@ -11,6 +11,7 @@
     ./helium
     ./mpd
     ./rmpc
+    ./xbox-battery-notifier
    ];
 }
 

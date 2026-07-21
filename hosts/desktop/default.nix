@@ -17,6 +17,12 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelParams = [
+    "usbcore.autosuspend=-1"
+    # Fix para el error "DualSense input CRC's check failed" con kernel 7.x
+    # HID_QUIRK_NO_EMPTY_INPUT (0x20000000) para el DualSense (Sony 054C:0CE6)
+    "usbhid.quirks=0x054C:0x0CE6:0x20000000"
+  ];
 
    networking.hostName = "desktop"; # Define your hostname.
 

@@ -117,7 +117,35 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
+    settings = {
+      General = {
+        Experimental = true;
+        JustWorksRepairing = "always";
+        FastConnectable = true;
+        ControllerMode = "dual";
+        # Privacy = "device"; # Puede causar problemas de conexión con algunos mandos
+      };
+      # Fix para DualSense: fuerza el modo de entrada correcto para evitar
+      # el error "DualSense input CRC's check failed" con kernels recientes
+      Policy = {
+        ReconnectAttempts = 7;
+        ReconnectIntervals = "1,2,4,8,16,32,64";
+      };
+    };
   };
+  # hardware.xpadneo.enable = true; # Para el mando de Xbox por Bluetooth
+  hardware.xone.enable = true; # Para el adaptador USB oficial de Xbox (dongle)
+  
+  # Logitech (Solaar para interfaz gráfica)
+  hardware.logitech.wireless.enable = true;
+  hardware.logitech.wireless.enableGraphical = true;
+  # Desactivar autosuspend de bluetooth para evitar desconexiones aleatorias
+  # + fix para el error CRC del DualSense con kernels recientes (7.x)
+  boot.extraModprobeConfig = ''
+    options btusb enable_autosuspend=n
+    options bluetooth disable_ertm=1
+    options hid_playstation ps_rumble_level=100
+  '';
   services.blueman.enable = true;
   services.udisks2.enable = true;
   # programs.firefox.enable = true;
@@ -155,8 +183,15 @@
      catppuccin-sddm
      localsend
      fastfetch
+     headsetcontrol
      
    ];
+   
+   # Reglas udev necesarias para que HeadsetControl detecte los auriculares sin ser root
+   services.udev.packages = with pkgs; [ headsetcontrol ];
+
+
+   # ----------------------------------------
   #Fonts
    fonts.packages = with pkgs; [
      jetbrains-mono
@@ -168,6 +203,7 @@
      freefont_ttf
    ];
   nixpkgs.config.allowUnfree = true; 
+  nixpkgs.config.permittedInsecurePackages = [ "pnpm-10.29.2" "electron-40.10.5" ];
 # programs.xwayland-satellite.enable = true;
  #programs.niri.enable = true;
  programs.xwayland.enable = true;

@@ -11,6 +11,9 @@
     enable = true;
     defaultEditor = true;
 
+    # Suppress the warning by explicitly defining the nixpkgs source
+    nixpkgs.source = inputs.nixpkgs;
+
     # ==========================
     # Opciones Base de Neovim
     # ==========================
